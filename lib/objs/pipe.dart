@@ -4,13 +4,12 @@ import 'package:flamebird/objs/obj.dart';
 
 class Pipe extends Obj {
   String image;
-
   Pipe(this.image);
 
   @override
   Future<void>? onLoad() async {
     sprite = await Sprite.load(image);
-    position = Vector2(600, random(-200, 0));
+    position = Vector2(-200, random(-250, -50));
     size = Vector2(100, 360);
 
     return super.onLoad();
@@ -21,7 +20,7 @@ class Pipe extends Obj {
     x -= 100 * dt;
     if (x < -100) {
       x = 600;
-      y = random(-200, 0);
+      y = random(-250, -50);
     }
     super.update(dt);
   }

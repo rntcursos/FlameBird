@@ -10,9 +10,9 @@ class Obj extends SpriteComponent with HasHitboxes, Collidable {
   bool collide = false;
   bool visible = true;
 
-  random(min, max) {
+  random(double min, double max) {
     var r = Random();
-    return min + r.nextInt(max - min);
+    return min + r.nextDouble() * (max - min);
   }
 
   animation(time, spritelimit, name) async {

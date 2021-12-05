@@ -2,6 +2,7 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/geometry.dart';
 import 'package:flame/input.dart';
+import 'package:flame_audio/audio_pool.dart';
 import 'package:flamebird/Util/util.dart';
 import 'package:flamebird/objs/bg.dart';
 import 'package:flamebird/objs/bird.dart';
@@ -21,8 +22,10 @@ class MainGame extends FlameGame with HasCollidables, TapDetector {
 
   Coin coin = Coin();
 
+  late AudioPool fly;
+
   @override
-  Future<void>? onLoad() {
+  Future<void>? onLoad() async {
     add(bg);
     add(bg2);
 
@@ -40,6 +43,8 @@ class MainGame extends FlameGame with HasCollidables, TapDetector {
 
     bird.addHitbox(HitboxRectangle());
     add(bird);
+
+    fly = await AudioPool.create("wing.ogg");
 
     return super.onLoad();
   }
@@ -64,7 +69,8 @@ class MainGame extends FlameGame with HasCollidables, TapDetector {
   @override
   void onTap() {
     if (bird.y > 0) {
-      bird.vel -= 12;
+      bird.vel -= 20;
+      fly.start();
     } else {
       bird.y = 0;
     }

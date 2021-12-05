@@ -1,9 +1,12 @@
+import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flamebird/game/maingame.dart';
 import 'package:flamebird/overlays/endscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding();
+  Flame.device.fullScreen();
   runApp(
     const MaterialApp(
       home: StartScreen(),
@@ -18,8 +21,8 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 500,
-        height: 900,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: GestureDetector(
           onTap: () {
             Navigator.push(
