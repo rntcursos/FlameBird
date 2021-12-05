@@ -1,7 +1,8 @@
 import 'package:flame/components.dart';
-import 'package:flappybird/Util/util.dart';
-import 'package:flappybird/objs/ground.dart';
-import 'package:flappybird/objs/obj.dart';
+import 'package:flamebird/Util/util.dart';
+import 'package:flamebird/objs/coin.dart';
+import 'package:flamebird/objs/ground.dart';
+import 'package:flamebird/objs/obj.dart';
 
 class Bird extends Obj {
   int grav = 1;
@@ -40,8 +41,16 @@ class Bird extends Obj {
   void onCollision(Set<Vector2> intersectionPoints, Collidable other) {
     if (other is Ground || other is Ground2) {
       gameOver = true;
-      y = other.y - height / 2;
     }
+
+    //if (other is Pipe) {
+    //other.visible = false;
+    //}
+
+    if (other is Coin) {
+      other.visible = false;
+    }
+
     super.onCollision(intersectionPoints, other);
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:flappybird/objs/obj.dart';
+import 'package:flamebird/objs/obj.dart';
 
 class Ground extends Obj {
   @override

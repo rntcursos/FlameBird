@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:flappybird/objs/obj.dart';
+import 'package:flamebird/objs/obj.dart';
 
 class Bg extends Obj {
   @override
@@ -29,7 +29,7 @@ class Bg2 extends Obj {
   @override
   Future<void>? onLoad() async {
     sprite = await Sprite.load("sky.png");
-    position = Vector2(width, 0);
+    position = Vector2(width - 1, 0);
     return super.onLoad();
   }
 
@@ -37,7 +37,7 @@ class Bg2 extends Obj {
   void update(double dt) {
     x -= 60 * dt;
     if (x < 0) {
-      x = width;
+      x = width - 1;
     }
     super.update(dt);
   }

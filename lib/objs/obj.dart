@@ -1,13 +1,14 @@
 import 'dart:math';
-
+import 'dart:ui';
 import 'package:flame/components.dart';
 
-class Obj extends SpriteComponent with Hitbox, Collidable {
+class Obj extends SpriteComponent with HasHitboxes, Collidable {
   int timer = 0;
   int img = 1;
   String name = "";
 
   bool collide = false;
+  bool visible = true;
 
   random(min, max) {
     var r = Random();
@@ -26,5 +27,12 @@ class Obj extends SpriteComponent with Hitbox, Collidable {
     }
 
     sprite = await Sprite.load(name + img.toString() + ".png");
+  }
+
+  @override
+  void render(Canvas canvas) {
+    if (visible) {
+      super.render(canvas);
+    }
   }
 }
